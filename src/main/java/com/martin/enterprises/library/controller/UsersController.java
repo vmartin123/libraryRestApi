@@ -1,5 +1,6 @@
 package com.martin.enterprises.library.controller;
 
+import com.martin.enterprises.library.config.StatusCodeException;
 import com.martin.enterprises.library.dto.UserDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +14,18 @@ public class UsersController {
     @GetMapping("/users")
     @ResponseStatus(HttpStatus.OK)
     public List<UserDto> getUsers() {
+        List<UserDto> usersList = createUsers();
 
-        return createUsers();
+        if (usersList == null) {
+            throw new StatusCodeException(HttpStatus.NOT_FOUND);
+        } else {
+            return usersList;
+        }
     }
 
     @GetMapping("/users/{DNI}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto getUserByDni(@PathVariable int DNI) throws Exception {
-
+    public UserDto getUserByDni(@PathVariable int DNI) {
         List<UserDto> usersList = createUsers();
 
         for (UserDto user : usersList) {
@@ -29,13 +34,12 @@ public class UsersController {
             }
         }
 
-        throw new Exception();
+        throw new StatusCodeException(HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/users")
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@RequestBody UserDto user) {
-
         System.out.println("User created: " + user.toString());
     }
 

@@ -1,16 +1,26 @@
 package com.martin.enterprises.library.config;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.client.HttpStatusCodeException;
 
-@ControllerAdvice
-public class StatusCodeException {
+import java.nio.charset.Charset;
 
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(value=HttpStatus.NOT_FOUND)
-    public void notFound() {
-        // Nothing to do
+public class StatusCodeException extends HttpStatusCodeException {
+
+    public StatusCodeException(HttpStatus statusCode) {
+        super(statusCode);
+    }
+
+    public StatusCodeException(HttpStatus statusCode, String statusText) {
+        super(statusCode, statusText);
+    }
+
+    public StatusCodeException(HttpStatus statusCode, String statusText, byte[] responseBody, Charset responseCharset) {
+        super(statusCode, statusText, responseBody, responseCharset);
+    }
+
+    public StatusCodeException(HttpStatus statusCode, String statusText, HttpHeaders responseHeaders, byte[] responseBody, Charset responseCharset) {
+        super(statusCode, statusText, responseHeaders, responseBody, responseCharset);
     }
 }
