@@ -2,8 +2,6 @@ package com.martin.enterprises.library.dto;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
-
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -12,8 +10,7 @@ import javax.validation.constraints.Size;
 public class UserDto {
 
     @NotNull
-    @Range(max=9)
-    private int DNI;
+    private int dni;
 
     @NotNull
     @Size(min=1, max=30)
@@ -24,14 +21,14 @@ public class UserDto {
     @Pattern(regexp = "^[A-Za-z]*$")
     private String lastName;
 
-    @Range(min=2)
+    @Range(min=18, max=200)
     private int age;
 
     public UserDto() {
     }
 
-    public UserDto(int DNI, String firstName, String lastName, int age) {
-        this.DNI = DNI;
+    public UserDto(int dni, String firstName, String lastName, int age) {
+        this.dni = dni;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;

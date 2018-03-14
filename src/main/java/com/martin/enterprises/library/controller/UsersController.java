@@ -24,13 +24,13 @@ public class UsersController {
         }
     }
 
-    @GetMapping("/users/{DNI}")
+    @GetMapping("/users/{dni}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto getUserByDni(@PathVariable int DNI) {
+    public UserDto getUserByDni(@PathVariable int dni) {
         List<UserDto> usersList = createUsers();
 
         for (UserDto user : usersList) {
-            if (user.getDNI() == DNI) {
+            if (user.getDni() == dni) {
                 return user;
             }
         }
