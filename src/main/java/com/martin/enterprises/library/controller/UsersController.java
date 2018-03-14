@@ -5,6 +5,7 @@ import com.martin.enterprises.library.dto.UserDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,12 +35,12 @@ public class UsersController {
             }
         }
 
-        throw new StatusCodeException(HttpStatus.BAD_REQUEST);
+        throw new StatusCodeException(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/users")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@RequestBody UserDto user) {
+    public void createUser(@Valid @RequestBody UserDto user) {
         System.out.println("User created: " + user.toString());
     }
 
