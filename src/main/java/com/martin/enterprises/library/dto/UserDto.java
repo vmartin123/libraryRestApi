@@ -27,7 +27,8 @@ public class UserDto {
     @Range(min=2)
     private int age;
 
-    public UserDto() {}
+    public UserDto() {
+    }
 
     public UserDto(int DNI, String firstName, String lastName, int age) {
         this.DNI = DNI;
