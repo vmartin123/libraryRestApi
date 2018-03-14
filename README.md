@@ -1,3 +1,3 @@
 # libraryRestApi
 
-Rest API to put in practice all the knowledges acquired from comafi
+Rest API to put in practice all the knowledge acquired from Comafi
