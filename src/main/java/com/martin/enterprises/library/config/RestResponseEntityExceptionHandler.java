@@ -13,13 +13,13 @@ import java.util.logging.Logger;
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    private Logger log = Logger.getLogger(RestResponseEntityExceptionHandler.class.getName());
+    private final Logger log = Logger.getLogger(RestResponseEntityExceptionHandler.class.getName());
 
     // handles all the exceptions
     @ExceptionHandler(value = { Exception.class })
     protected ResponseEntity<Object> handleInternalServerError(Exception ex, WebRequest request) {
 
-        log.warning(ex.getMessage());
+        log.severe(ex.getMessage());
         return handleExceptionInternal(ex, "Internal Server Error", new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
 
@@ -27,7 +27,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ExceptionHandler(value = { StatusCodeException.class })
     protected ResponseEntity<Object> handleStatusCode(StatusCodeException ex, WebRequest request) {
 
-        log.warning(ex.getMessage());
+        log.severe(ex.getMessage());
         return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), ex.getStatusCode(), request);
     }
 }
