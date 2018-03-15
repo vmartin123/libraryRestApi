@@ -2,7 +2,6 @@ package com.martin.enterprises.library.controller;
 
 import com.martin.enterprises.library.config.StatusCodeException;
 import com.martin.enterprises.library.dto.UserDto;
-import com.martin.enterprises.library.entity.Book;
 import com.martin.enterprises.library.entity.User;
 import com.martin.enterprises.library.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,17 +9,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @RestController
-public class UsersController {
+public class LibraryController {
 
     private final UserRepository userRepository;
 
     @Autowired
-    public UsersController(UserRepository userRepository) {
+    public LibraryController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

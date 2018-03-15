@@ -3,32 +3,27 @@ package com.martin.enterprises.library.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Data
-public class Book {
+public class Category {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    @NotNull
     private String name;
 
-    private String author;
-
-    private String editorial;
-
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable
-    private Set<Category> categories = new HashSet<>();
+    private Set<Book> books = new HashSet<>();
 
-    public Book() {}
+    public Category() {}
 
-    public Book(String name, String author, String editorial) {
+    public Category(String name) {
         this.name = name;
-        this.author = author;
-        this.editorial = editorial;
     }
 }

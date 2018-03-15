@@ -24,6 +24,9 @@ public class User {
 
     private int age;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Book> books = new HashSet<>();
+
     public User() {}
 
     public User(int dni, String firstName, String lastName, int age) {
@@ -40,7 +43,4 @@ public class User {
         this.age = age;
         this.books = books;
     }
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Book> books = new HashSet<>();
 }
