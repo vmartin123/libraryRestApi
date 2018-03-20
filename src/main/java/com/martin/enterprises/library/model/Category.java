@@ -1,11 +1,11 @@
-package com.martin.enterprises.library.entity;
+package com.martin.enterprises.library.model;
 
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,7 +19,7 @@ public class Category {
     private String name;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Book> books = new HashSet<>();
+    private List<Book> books = new ArrayList<>();
 
     public Category() {}
 

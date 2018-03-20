@@ -1,11 +1,11 @@
-package com.martin.enterprises.library.entity;
+package com.martin.enterprises.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,8 +24,9 @@ public class User {
 
     private int age;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Book> books = new HashSet<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Book> books = new ArrayList<>();
 
     public User() {}
 
@@ -36,7 +37,7 @@ public class User {
         this.age = age;
     }
 
-    public User(int dni, String firstName, String lastName, int age, Set<Book> books) {
+    public User(int dni, String firstName, String lastName, int age, List<Book> books) {
         this.dni = dni;
         this.firstName = firstName;
         this.lastName = lastName;

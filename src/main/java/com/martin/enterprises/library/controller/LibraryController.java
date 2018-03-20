@@ -2,7 +2,9 @@ package com.martin.enterprises.library.controller;
 
 import com.martin.enterprises.library.config.StatusCodeException;
 import com.martin.enterprises.library.dto.UserDto;
-import com.martin.enterprises.library.entity.User;
+import com.martin.enterprises.library.model.Book;
+import com.martin.enterprises.library.model.User;
+import com.martin.enterprises.library.repository.BookRepository;
 import com.martin.enterprises.library.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,16 +17,24 @@ import java.util.List;
 public class LibraryController {
 
     private final UserRepository userRepository;
+    private final BookRepository bookRepository;
 
     @Autowired
-    public LibraryController(UserRepository userRepository) {
+    public LibraryController(UserRepository userRepository, BookRepository bookRepository) {
         this.userRepository = userRepository;
+        this.bookRepository = bookRepository;
     }
 
     @GetMapping("/users")
     @ResponseStatus(HttpStatus.OK)
     public List<User> getUsers() {
-        return (List<User>) userRepository.findAll();
+        return userRepository.findAll();
+    }
+
+    @GetMapping("/books")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Book> getBooks() {
+        return bookRepository.findAll();
     }
 
     @GetMapping("/users/{dni}")
@@ -58,10 +68,10 @@ public class LibraryController {
         userRepository.save(new User(user.getDni(), user.getFirstName(), user.getLastName(), user.getAge()));
     }
 
-    @PostMapping("/users_books")
+    @PostMapping("/books_users")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUserBooks(@Valid @RequestBody User user) {
+    public void createUserBooks(@Valid @RequestBody Book book) {
 
-        userRepository.save(new User(user.getDni(), user.getFirstName(), user.getLastName(), user.getAge(), user.getBooks()));
+        bookRepository.save(book);
     }
 }

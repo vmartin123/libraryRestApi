@@ -1,4 +1,4 @@
-package com.martin.enterprises.library.entity;
+package com.martin.enterprises.library.model;
 
 import lombok.Data;
 
@@ -20,15 +20,11 @@ public class Book {
 
     private String editorial;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="user_id")
+    private User user;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable
     private Set<Category> categories = new HashSet<>();
-
-    public Book() {}
-
-    public Book(String name, String author, String editorial) {
-        this.name = name;
-        this.author = author;
-        this.editorial = editorial;
-    }
 }
