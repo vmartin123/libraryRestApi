@@ -1,5 +1,6 @@
 package com.martin.enterprises.library.controller;
 
+import com.martin.enterprises.library.Util.CustomStatusCodes;
 import com.martin.enterprises.library.config.StatusCodeException;
 import com.martin.enterprises.library.dto.UserDto;
 import com.martin.enterprises.library.model.Book;
@@ -16,62 +17,68 @@ import java.util.List;
 @RestController
 public class LibraryController {
 
-    private final UserRepository userRepository;
-    private final BookRepository bookRepository;
-
-    @Autowired
-    public LibraryController(UserRepository userRepository, BookRepository bookRepository) {
-        this.userRepository = userRepository;
-        this.bookRepository = bookRepository;
-    }
-
-    @GetMapping("/users")
+    @GetMapping("/test")
     @ResponseStatus(HttpStatus.OK)
-    public List<User> getUsers() {
-        return userRepository.findAll();
+    public void test() {
+        throw new StatusCodeException(HttpStatus.NOT_FOUND, CustomStatusCodes.USUARIO_NO_ENCONTRADO);
     }
 
-    @GetMapping("/books")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Book> getBooks() {
-        return bookRepository.findAll();
-    }
-
-    @GetMapping("/users/{dni}")
-    @ResponseStatus(HttpStatus.OK)
-    public User getUserByDni(@PathVariable int dni) {
-        User user = userRepository.findByDni(dni);
-
-        if (user == null) {
-            throw new StatusCodeException(HttpStatus.NOT_FOUND);
-        }else {
-            return user;
-        }
-    }
-
-    @GetMapping("/users/{dni}/books")
-    @ResponseStatus(HttpStatus.OK)
-    public User getUserBooksByDni(@PathVariable int dni) {
-        User user = userRepository.findByDni(dni);
-
-        if (user == null) {
-            throw new StatusCodeException(HttpStatus.NOT_FOUND);
-        }else {
-            return user;
-        }
-    }
-
-    @PostMapping("/users")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@Valid @RequestBody UserDto user) {
-
-        userRepository.save(new User(user.getDni(), user.getFirstName(), user.getLastName(), user.getAge()));
-    }
-
-    @PostMapping("/books_users")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void createUserBooks(@Valid @RequestBody Book book) {
-
-        bookRepository.save(book);
-    }
+//    private final UserRepository userRepository;
+//    private final BookRepository bookRepository;
+//
+//    @Autowired
+//    public LibraryController(UserRepository userRepository, BookRepository bookRepository) {
+//        this.userRepository = userRepository;
+//        this.bookRepository = bookRepository;
+//    }
+//
+//    @GetMapping("/users")
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<User> getUsers() {
+//        return userRepository.findAll();
+//    }
+//
+//    @GetMapping("/books")
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<Book> getBooks() {
+//        return bookRepository.findAll();
+//    }
+//
+//    @GetMapping("/users/{dni}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public User getUserByDni(@PathVariable int dni) {
+//        User user = userRepository.findByDni(dni);
+//
+//        if (user == null) {
+//            throw new StatusCodeException(HttpStatus.NOT_FOUND);
+//        }else {
+//            return user;
+//        }
+//    }
+//
+//    @GetMapping("/users/{dni}/books")
+//    @ResponseStatus(HttpStatus.OK)
+//    public User getUserBooksByDni(@PathVariable int dni) {
+//        User user = userRepository.findByDni(dni);
+//
+//        if (user == null) {
+//            throw new StatusCodeException(HttpStatus.NOT_FOUND);
+//        }else {
+//            return user;
+//        }
+//    }
+//
+//    @PostMapping("/users")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void createUser(@Valid @RequestBody UserDto user) {
+//
+//        userRepository.save(new User(user.getDni(), user.getFirstName(), user.getLastName(), user.getAge()));
+//    }
+//
+//    @PostMapping("/books_users")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void createUserBooks(@Valid @RequestBody Book book) {
+//
+//        bookRepository.save(book);
+//    }
 }

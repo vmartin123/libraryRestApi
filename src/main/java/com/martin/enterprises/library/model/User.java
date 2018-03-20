@@ -9,10 +9,12 @@ import java.util.List;
 
 @Entity
 @Data
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "user_id")
     private Long id;
 
     @Column(unique=true)
@@ -25,7 +27,6 @@ public class User {
     private int age;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
     private List<Book> books = new ArrayList<>();
 
     public User() {}
