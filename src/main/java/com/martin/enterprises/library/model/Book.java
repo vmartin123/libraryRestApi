@@ -23,8 +23,7 @@ public class Book {
 
     private String editorial;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
+    @ManyToOne()
     @JoinColumn(name="user_id")
     private User user;
 

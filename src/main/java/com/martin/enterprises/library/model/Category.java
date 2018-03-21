@@ -22,7 +22,6 @@ public class Category {
     private String name;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
     @JoinTable(name = "books_categories",
             joinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"))

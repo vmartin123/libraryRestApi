@@ -17,20 +17,35 @@ import java.util.List;
 @RestController
 public class LibraryController {
 
-    @GetMapping("/test")
-    @ResponseStatus(HttpStatus.OK)
-    public void test() {
-        throw new StatusCodeException(HttpStatus.NOT_FOUND, CustomStatusCodes.USUARIO_NO_ENCONTRADO);
+    private final UserRepository userRepository;
+    private final BookRepository bookRepository;
+
+    @Autowired
+    public LibraryController(UserRepository userRepository, BookRepository bookRepository) {
+        this.userRepository = userRepository;
+        this.bookRepository = bookRepository;
     }
 
-//    private final UserRepository userRepository;
-//    private final BookRepository bookRepository;
+    @GetMapping("/test/{expected}")
+    @ResponseStatus(HttpStatus.OK)
+    public String test(@PathVariable String expected) {
+        String test = "OK";
+
+        if (test.equals(expected)) {
+            return test;
+        } else {
+            throw new StatusCodeException(HttpStatus.NOT_FOUND, CustomStatusCodes.USUARIO_NO_ENCONTRADO);
+        }
+    }
+
+//    @PostMapping("/users")
+//    @ResponseStatus(HttpStatus.OK)
+//    public User createUserBooksCategories(@Valid @RequestBody User user) {
 //
-//    @Autowired
-//    public LibraryController(UserRepository userRepository, BookRepository bookRepository) {
-//        this.userRepository = userRepository;
-//        this.bookRepository = bookRepository;
+//        userRepository.save(user);
+//        return user;
 //    }
+
 //
 //    @GetMapping("/users")
 //    @ResponseStatus(HttpStatus.OK)

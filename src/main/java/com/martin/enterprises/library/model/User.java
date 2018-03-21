@@ -1,6 +1,5 @@
 package com.martin.enterprises.library.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -26,7 +25,7 @@ public class User {
 
     private int age;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user")
     private List<Book> books = new ArrayList<>();
 
     public User() {}
