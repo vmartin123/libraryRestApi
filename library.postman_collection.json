@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "b43d7712-c021-4f25-a099-139eb3e74268",
+		"name": "library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/libraryService/test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/libraryService/test/OK",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libraryService",
+						"test",
+						"OK"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/libraryService/users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/libraryService/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libraryService",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/libraryService/users/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/libraryService/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libraryService",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/libraryService/users/1/books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/libraryService/users/1/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libraryService",
+						"users",
+						"1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/libraryService/users/search/findByDni?dni=95573928",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/libraryService/users/search/findByDni?dni=95573928",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libraryService",
+						"users",
+						"search",
+						"findByDni"
+					],
+					"query": [
+						{
+							"key": "dni",
+							"value": "95573928"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/libraryService/books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/libraryService/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libraryService",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/libraryService/categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/libraryService/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libraryService",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/libraryService/users/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"dni\": 95573928,\n    \"firstName\": \"victor\",\n    \"lastName\": \"martin\",\n    \"age\": 30\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/libraryService/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libraryService",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/libraryService/books",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Eneida\",\r\n    \"author\": \"Virgilio\",\r\n    \"editorial\": \"Ilustrada\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/libraryService/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libraryService",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/libraryService/categories",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Comedy\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/libraryService/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libraryService",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/libraryService/books/1/user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/uri-list"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "http://localhost:8080/libraryService/users/1"
+				},
+				"url": {
+					"raw": "http://localhost:8080/libraryService/books/2/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libraryService",
+						"books",
+						"2",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/libraryService/categories/1/books",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/uri-list"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "http://localhost:8080/libraryService/books/2"
+				},
+				"url": {
+					"raw": "http://localhost:8080/libraryService/categories/1/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libraryService",
+						"categories",
+						"1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
