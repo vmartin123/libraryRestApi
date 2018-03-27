@@ -1,3 +1,3 @@
 # libraryRestApi
 
-Rest API to put in practice all the knowledge acquired from Comafi
+Rest API to put in practice spring-data-rest and normal endponints
