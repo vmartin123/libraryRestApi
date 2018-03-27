@@ -38,6 +38,12 @@ public class LibraryController {
         }
     }
 
+
+//    *** IMPORTANTE ***
+//    aca estos endpoints en principio eran un ABM a la tabla 'Users', pero se dejaron comentados
+//    porque al utilizar spring-data-rest todos los repositorios se despliegan en forma de api con sus respectivos ABM, quedando estos sin utilidad
+
+
 //    @PostMapping("/users")
 //    @ResponseStatus(HttpStatus.OK)
 //    public User createUserBooksCategories(@Valid @RequestBody User user) {
